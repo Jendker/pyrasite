@@ -25,6 +25,20 @@ Tools for injecting arbitrary code into running Python processes.
 :jenkins: http://ci.csh.rit.edu/view/Pyrasite
 :irc: #pyrasite on Freenode
 
+ptrace_scope
+~~~~~~~~~~~~
+
+On Linux `kernel.yama.ptrace_scope` has to be 0 in order to attach to a process. To achieve it:
+
+* Permanently (lowers security):
+
+edit ``/etc/sysctl.d/10-ptrace.conf`` and set ``kernel.yama.ptrace_scope`` to 0  
+
+* Temporarily:
+
+``echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope``
+
+
 Requirements
 ~~~~~~~~~~~~
 
